@@ -1,0 +1,7 @@
+[package]
+name = "x64"
+version = "0.1.0"
+authors = ["Alex Brooke <brookea@purdue.edu>"]
+
+[dependencies]
+discord = "0.7.0"

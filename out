@@ -1,0 +1,91 @@
+   Compiling x64 v0.1.0 (file:///mnt/d/Desktop/coading/rusty/x64)
+error[E0277]: the trait bound `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static: std::marker::Sized` is not satisfied in `Cmd`
+  --> src/main.rs:20:19
+   |
+20 |     let commands: Vec<Cmd> = vec![
+   |                   ^^^^^^^^ within `Cmd`, the trait `std::marker::Sized` is not implemented for `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static`
+   |
+   = note: `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static` does not have a constant size known at compile-time
+   = note: required because it appears within the type `Cmd`
+   = note: required by `std::vec::Vec`
+
+error[E0308]: mismatched types
+  --> src/main.rs:23:17
+   |
+23 |             cb: cmd_test,
+   |                 ^^^^^^^^ expected trait std::ops::Fn, found fn item
+   |
+   = note: expected type `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static`
+              found type `fn(discord::Discord, &discord::model::Message, std::vec::Vec<&str>) {cmd_test}`
+
+error[E0277]: the trait bound `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static: std::marker::Sized` is not satisfied in `Cmd`
+  --> src/main.rs:20:30
+   |
+20 |       let commands: Vec<Cmd> = vec![
+   |  ______________________________^ starting here...
+21 | |         Cmd {
+22 | |             id: "test",
+23 | |             cb: cmd_test,
+24 | |         }
+25 | |     ];
+   | |_____^ ...ending here: within `Cmd`, the trait `std::marker::Sized` is not implemented for `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static`
+   |
+   = note: `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static` does not have a constant size known at compile-time
+   = note: required because it appears within the type `Cmd`
+   = note: required by `std::slice::<impl [T]>::into_vec`
+   = note: this error originates in a macro outside of the current crate
+
+error[E0277]: the trait bound `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static: std::marker::Sized` is not satisfied in `Cmd`
+  --> src/main.rs:20:30
+   |
+20 |       let commands: Vec<Cmd> = vec![
+   |  ______________________________^ starting here...
+21 | |         Cmd {
+22 | |             id: "test",
+23 | |             cb: cmd_test,
+24 | |         }
+25 | |     ];
+   | |_____^ ...ending here: within `Cmd`, the trait `std::marker::Sized` is not implemented for `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static`
+   |
+   = note: `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static` does not have a constant size known at compile-time
+   = note: required because it appears within the type `Cmd`
+   = note: required by `std::vec::Vec`
+   = note: this error originates in a macro outside of the current crate
+
+error[E0277]: the trait bound `&std::vec::Vec<Cmd>: std::iter::IntoIterator` is not satisfied
+  --> src/main.rs:71:17
+   |
+71 |                   for c in &commands {
+   |  _________________^ starting here...
+72 | |                     if c.id == cmd {
+73 | |                         c.cb(discord, &msg.clone(), args.clone());
+74 | |                     }
+75 | |                 }
+   | |_________________^ ...ending here: the trait `std::iter::IntoIterator` is not implemented for `&std::vec::Vec<Cmd>`
+   |
+   = help: the following implementations were found:
+             <std::vec::Vec<T> as std::iter::IntoIterator>
+             <&'a std::vec::Vec<T> as std::iter::IntoIterator>
+             <&'a mut std::vec::Vec<T> as std::iter::IntoIterator>
+   = note: required by `std::iter::IntoIterator::into_iter`
+
+error[E0277]: the trait bound `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static: std::marker::Sized` is not satisfied in `Cmd`
+  --> src/main.rs:71:17
+   |
+71 |                   for c in &commands {
+   |  _________________^ starting here...
+72 | |                     if c.id == cmd {
+73 | |                         c.cb(discord, &msg.clone(), args.clone());
+74 | |                     }
+75 | |                 }
+   | |_________________^ ...ending here: within `Cmd`, the trait `std::marker::Sized` is not implemented for `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static`
+   |
+   = note: `for<'r, 'r> std::ops::Fn(discord::Discord, &'r discord::model::Message, std::vec::Vec<&'r str>) + 'static` does not have a constant size known at compile-time
+   = note: required because it appears within the type `Cmd`
+   = note: required by `std::vec::Vec`
+
+error: aborting due to 6 previous errors
+
+error: Could not compile `x64`.
+
+To learn more, run the command again with --verbose.
